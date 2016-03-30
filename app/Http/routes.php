@@ -14,14 +14,12 @@
 Route::group(['middleware' => ['web']], function () {
     //
 
-    Route::get('/', function () {
-        return view('index');
-    });
+    Route::auth();
+
+    Route::get('/', 'HomeController@index');
 
 });
 
 
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
