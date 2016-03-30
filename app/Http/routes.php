@@ -16,11 +16,42 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::auth();
 
-    Route::get('/', 'HomeController@index');
 
-    Route::get('/home', 'HomeController@index');
+    // posts
 
-    Route::get('/create', 'PostController@index');
+    // show all
+
+    Route::get('/', 'PostController@index');
+    Route::get('/home', 'PostController@index');
+
+
+    // show one
+
+    Route::get('/posts/{post}', 'PostController@show');
+
+
+    // New post
+
+    Route::get('/create', 'PostController@create');
+
+    Route::post('/home', 'PostController@store');
+
+
+
+
+    // edit post
+
+    Route::get('/posts/{post}/edit', 'PostController@edit');
+
+    Route::patch('/posts/{post}','PostController@update');
+
+
+    // comments
+
+    Route::post('/posts/{post}/comments', 'CommentController@store');
+
+
+
 
 });
 

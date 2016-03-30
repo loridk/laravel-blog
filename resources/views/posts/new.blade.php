@@ -10,7 +10,7 @@
                 <div class="panel-body">
 
 
-                    <form role="form" id="post-form" class="form-horizontal" method="post" action="">
+                    <form role="form" id="post-form" class="form-horizontal" method="post" action="/posts">
 
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="post-title">Post Title:</label>
