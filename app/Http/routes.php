@@ -18,6 +18,10 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', 'HomeController@index');
 
+    Route::get('/home', 'HomeController@index');
+
+    Route::get('/create', 'PostController@index');
+
 });
 
 
