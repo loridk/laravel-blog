@@ -11,7 +11,7 @@ use App\Comment;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Card $card) {
+    public function store(Request $request, Post $post) {
 
         // validate
 
@@ -19,19 +19,9 @@ class CommentController extends Controller
             'body' => 'required|min:10'
         ]);
 
-        $note = new Note($request->all());
+        $comment = new Comment($request->all());
 
-        $card->addNote($note, 1);
-
-
-        /*
-
-               // simple with create
-
-                $card->notes()->create([
-                    'body' => $request->body
-                ]);
-                */
+        $post->addComment($comment, 1);
 
         return back();
     }

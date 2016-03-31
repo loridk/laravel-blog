@@ -18,9 +18,6 @@ Route::group(['middleware' => ['web']], function () {
 
 
     // posts
-
-    // Store Card
-    //Route::post('cards', 'CardsController@store');
     // Delete Card
     //Route::delete('cards/{card}/delete', 'CardsController@destroy');
 
@@ -28,12 +25,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PostController@index');
     Route::get('/home', 'PostController@index');
 
-    // show one
-    Route::get('/{post}', 'PostController@show');
-
     // New post
     Route::get('/new-post', 'PostController@create');
     Route::post('/home', 'PostController@store');
+
+    // show one
+    Route::get('/{post}', 'PostController@show');
+
+
 
     // edit post
     //Route::get('/{post}/edit', 'PostController@edit');

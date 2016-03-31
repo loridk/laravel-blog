@@ -40,7 +40,7 @@
             <ul class="list-unstyled">
                 @foreach($post->comments as $comment)
                     <hr />
-                        <li>{{ $comment->body }}</li>
+                        <li>{{ $comment->body }} - {{ $comment->user->name  }}</li>
                     <hr />
                     {{--<li>{{ $comment->body }} - By {{ $comment->user->username }}</li>--}}
 
@@ -48,7 +48,7 @@
             </ul>
 
 
-
+        @if (Auth::user())
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -56,14 +56,16 @@
             </div>
 
             <div class="panel-body">
-
                 <form method="post" action="/{{ $post->id }}/comments">
-                    <textarea name="body" class="col-md-10 col-md-offset-1"></textarea>
+                    {{ csrf_field() }}
+                    <textarea name="body" class="col-md-10 col-md-offset-1">{{ old('body') }}</textarea>
 
                     <div class="col-md-3 col-md-offset-4" style="margin-top: 5%">
                         <button class="btn btn-primary" type="submit">Add Comment</button>
                     </div>
                 </form>
+
+                @endif
 
 
             </div>

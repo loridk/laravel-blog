@@ -32,7 +32,21 @@ class PostController extends Controller
     }
 
 
-    /*public function store(Request $request)
+   /* public function store(Request $request, Post $post) {
+
+        $this->validate($request, [
+            'title' => 'required|min:4|max:140',
+            'body' => 'required|min:10'
+        ]);
+
+        $comment = new Comment($request->all());
+
+        $post->addComment($comment, 1);
+    }
+
+
+
+    public function store(Request $request, Post $post)
     {
         $this->validate($request, [
             'title' => 'required|min:4|max:140',
@@ -43,31 +57,35 @@ class PostController extends Controller
         $post->save();
 
         //session()->flash('flash_message', 'Post Created! Great job.');
-        return redirect('/');
+        return redirect('/home');
     }*/
 
 
-    /*public function store(Request $request, Post $post)
+    public function store(Request $request, Post $post)
     {
-
         // validate
-
         $this->validate($request, [
             'body' => 'required|min:10',
-            'title' => 'required|min:10'
+            'title' => 'required|min:4|max:140'
         ]);
 
         $post->create([
             'title' => $request->title,
-            'body' => $request->body
+            'body' => $request->body,
+            'user_id' => $request->user()->id
         ]);
 
 
         return view('home', 'PostController@index');
-    }*/
+    }
 
 
-
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        session()->flash('flash_message', 'Post Archived!');
+        return redirect('/');
+    }
 
 
    /* public function edit(Post $post)
@@ -80,14 +98,9 @@ class PostController extends Controller
         $post->update($request->all());
 
     }
-
-     public function destroy(Post $post)
-    {
-        $post->delete();
-        session()->flash('flash_message', 'Post Archived!');
-        return redirect('/');
-    }
+*/
 
 
-   */
+
+
 }

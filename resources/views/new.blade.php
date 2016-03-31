@@ -10,8 +10,8 @@
                 <div class="panel-body">
 
 
-                    <form role="form" id="post-form" class="form-horizontal" method="post" action="">
-
+                    <form role="form" id="post-form" class="form-horizontal" method="post" action="/home">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="post-title">Post Title:</label>
                             <div class="col-sm-10">
