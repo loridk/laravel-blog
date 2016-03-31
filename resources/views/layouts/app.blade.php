@@ -27,7 +27,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+        <div class="container" id="0">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -62,7 +62,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/create') }}">New Post</a></li>
+                                <li><a href="{{ url('/new') }}">New Post</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -74,9 +74,16 @@
 
     @yield('content')
 
+
+
     <!-- JavaScripts -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="'scripts/script.js'"></script>
+
+
+    <a href="#0" class="cd-top">Top</a>
+
 </body>
 </html>

@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function create()
     {
-        return view('posts.new');
+        return view('/new');
     }
 
     public function store(Request $request, Post $post)
@@ -32,7 +32,7 @@ class PostController extends Controller
         ]);
 
 
-        return back();
+        return view('home', 'PostController@index');
     }
 
 
@@ -46,17 +46,15 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $post->load('comments.user');
 
-
-//        $post->load('comments.user');
-
-        return view('posts.show', compact('post'));
+        return view('show', compact('post'));
     }
 
 
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        return view('edit', compact('post'));
     }
 
     public function update(Request $request, Post $post)

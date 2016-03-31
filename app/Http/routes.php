@@ -24,15 +24,18 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PostController@index');
     Route::get('/home', 'PostController@index');
 
+    Route::get('/posts', function () {
+        return view('/', 'PostController@index');
+    });
 
     // show one
 
-    Route::get('/posts/{post}', 'PostController@show');
+    Route::get('/{post}', 'PostController@show');
 
 
     // New post
 
-    Route::get('/create', 'PostController@create');
+    Route::get('/new', 'PostController@create');
 
     Route::post('/home', 'PostController@store');
 
@@ -41,14 +44,14 @@ Route::group(['middleware' => ['web']], function () {
 
     // edit post
 
-    Route::get('/posts/{post}/edit', 'PostController@edit');
+    Route::get('/{post}/edit', 'PostController@edit');
 
-    Route::patch('/posts/{post}','PostController@update');
+    Route::patch('/{post}','PostController@update');
 
 
     // comments
 
-    Route::post('/posts/{post}/comments', 'CommentController@store');
+    Route::post('/{post}/comments', 'CommentController@store');
 
 
 
