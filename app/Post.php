@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-
     protected $fillable = ['body', 'title'];
 
     public function comments() {
@@ -21,4 +20,11 @@ class Post extends Model
         return $this->comments()->save($comment);
 
     }
+
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
 }

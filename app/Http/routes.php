@@ -19,42 +19,29 @@ Route::group(['middleware' => ['web']], function () {
 
     // posts
 
-    // show all
+    // Store Card
+    //Route::post('cards', 'CardsController@store');
+    // Delete Card
+    //Route::delete('cards/{card}/delete', 'CardsController@destroy');
 
+    // show all
     Route::get('/', 'PostController@index');
     Route::get('/home', 'PostController@index');
 
-    Route::get('/posts', function () {
-        return view('/', 'PostController@index');
-    });
-
     // show one
-
     Route::get('/{post}', 'PostController@show');
 
-
     // New post
-
-    Route::get('/new', 'PostController@create');
-
+    Route::get('/new-post', 'PostController@create');
     Route::post('/home', 'PostController@store');
 
-
-
-
     // edit post
-
-    Route::get('/{post}/edit', 'PostController@edit');
-
-    Route::patch('/{post}','PostController@update');
+    //Route::get('/{post}/edit', 'PostController@edit');
+    //Route::patch('/{post}','PostController@update');
 
 
     // comments
-
     Route::post('/{post}/comments', 'CommentController@store');
-
-
-
 
 });
 
