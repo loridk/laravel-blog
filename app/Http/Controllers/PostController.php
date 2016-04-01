@@ -87,10 +87,10 @@ class PostController extends Controller
         $post->delete();
 
         if($post->delete()) {
-            return Redirect::route('home')->with('message', 'Post deleted.');
+            return Redirect::route('home');
         }
         else {
-            return Redirect::route('home')->with('message', 'Error.');
+            Echo "Error";
         }
     }
 

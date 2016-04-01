@@ -19,12 +19,13 @@
 
         <div class="col-md-8">
 
-                @if ( session()->has('message') )
-                    <div class="alert alert-info">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <p>{{ session()->get('message') }}</p>
-                    </div>
-                @endif
+            @if (Session::has('flash_notification.message'))
+                <div class="alert alert-{{ Session::get('flash_notification.level') }}">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                    {{ Session::get('flash_notification.message') }}
+                </div>
+            @endif
 
 
 

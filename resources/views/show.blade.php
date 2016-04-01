@@ -27,6 +27,10 @@
 
 
             </div>
+            <div class="panel-footer">
+                Post By: {{ $post->user->name }}
+            </div>
+
         </div>
     </div>
 

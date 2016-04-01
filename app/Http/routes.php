@@ -18,7 +18,6 @@ Route::group(['middleware' => ['web']], function () {
 
     // show all
     Route::get('/', 'PostController@index');
-    Route::get('/home', 'PostController@index');
     Route::get('/home',  ['as' => 'home', 'uses' => 'PostController@index']);
 
     // show one
@@ -26,8 +25,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     // New post
-    Route::get('/new-post', 'PostController@create');
-    Route::post('/home', 'PostController@store');
+    Route::get('/new-post', 'PostController@create'); // change
+    Route::post('/add-post', 'PostController@store');
 
     // New Comment
     Route::post('/{post}/comments', 'CommentController@store');
