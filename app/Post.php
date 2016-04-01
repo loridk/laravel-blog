@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $dates = ['created_at'];
     protected $fillable = ['body', 'title'];
 
     public function comments() {

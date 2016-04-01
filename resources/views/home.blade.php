@@ -3,13 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row">
-            @foreach($posts as $post)
 
-                <div class="col-md-10 col-md-offset-1">
+
+        <div class="col-md-2 hidden-xs">
+            <h4>Recent Posts</h4>
+
+            @foreach ($posts->reverse()->slice(0, 5) as $post)
+
+                <p><a href="/{{ $post->id }}">{{ $post->title  }}</a></p>
+
+            @endforeach
+
+
+        </div>
+
+        <div class="col-md-8">
+
+            @foreach($posts->reverse() as $post)
+
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a href="/{{ $post->id }}">{{ $post->title  }}</a>
-                            <a href="/{{ $post->id }}">{{ $post->timestamp  }}</a>
+                            <span class="pull-right"><a href="/{{ $post->id }}">{{ $post->created_at->format('m-d-Y')  }}</a></span>
                         </div>
 
                         <div class="panel-body">
@@ -19,12 +35,12 @@
 
                         </div>
                     </div>
-                </div>
+
 
 
             @endforeach
 
-
+        </div>
 
 
 
