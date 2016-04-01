@@ -20,23 +20,24 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PostController@index');
     Route::get('/home',  ['as' => 'home', 'uses' => 'PostController@index']);
 
-    // show one
-    Route::get('/{post}', 'PostController@show');
-
-
     // New post
-    Route::get('/new-post', 'PostController@create'); // change
-    Route::post('/add-post', 'PostController@store');
-
-    // New Comment
-    Route::post('/{post}/comments', 'CommentController@store');
+    Route::get('/new-post', 'PostController@create');
+    Route::post('/add-post',  ['as' => 'add-post', 'uses' => 'PostController@store']);
 
     // Delete Post
     Route::delete('/delete',  ['as' => 'delete', 'uses' => 'PostController@destroy']);
 
     // edit post
-    Route::get('/edit', 'PostController@edit');
+    //Route::get('/edit', 'PostController@edit');
     //Route::patch('/{post}','PostController@update');
+
+    // show one
+    Route::get('/{post}', 'PostController@show');
+
+    // New Comment
+    Route::post('/{post}/comments', 'CommentController@store');
+
+
 
 
 

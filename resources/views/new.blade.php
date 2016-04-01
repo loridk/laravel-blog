@@ -10,6 +10,22 @@
                 <div class="panel-body">
 
 
+
+                    {{--{{ Form::open(['method' => 'POST', 'route' => ['add-post'], 'class' => 'form-horizontal', 'id' => 'post-form', 'role' => 'form']) }}
+
+
+
+                        {{ Form::label(['post-title', 'Post Tile:', 'class' => 'control-label col-sm-2']) }}
+
+
+                    {{ Form::text('post-title', 'Title', 'required', ['class' => 'form-control', 'id' => 'post-title']) }}
+
+
+                    {{ Form::submit('Send',['class' => 'btn btn-primary']) }}
+
+                    {{ Form::close() }}--}}
+
+
                     <form role="form" id="post-form" class="form-horizontal" method="post" action="/add-post">
                         {{ csrf_field() }}
                         <div class="form-group">
