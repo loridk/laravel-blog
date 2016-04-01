@@ -16,31 +16,34 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::auth();
 
-
-    // posts
-    // Delete Card
-    //Route::delete('cards/{card}/delete', 'CardsController@destroy');
-
     // show all
     Route::get('/', 'PostController@index');
     Route::get('/home', 'PostController@index');
-
-    // New post
-    Route::get('/new-post', 'PostController@create');
-    Route::post('/home', 'PostController@store');
+    Route::get('/home',  ['as' => 'home', 'uses' => 'PostController@index']);
 
     // show one
     Route::get('/{post}', 'PostController@show');
 
 
+    // New post
+    Route::get('/new-post', 'PostController@create');
+    Route::post('/home', 'PostController@store');
+
+    // New Comment
+    Route::post('/{post}/comments', 'CommentController@store');
+
+    // Delete Post
+    Route::delete('/delete',  ['as' => 'delete', 'uses' => 'PostController@destroy']);
 
     // edit post
     //Route::get('/{post}/edit', 'PostController@edit');
     //Route::patch('/{post}','PostController@update');
 
 
-    // comments
-    Route::post('/{post}/comments', 'CommentController@store');
+
+
+
+
 
 });
 

@@ -9,7 +9,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 {{ $post->title  }}
-                <br />{{ $post->timestamp  }}
+
+                @if (Auth::user())
+                    <span class="pull-right">
+                       {{ Form::open(['method' => 'DELETE', 'route' => ['delete']]) }}
+                        {{ Form::submit('Delete', ['class' => 'btn btn-primary btn-xs']) }}
+                        {{ Form::close() }}
+                    </span>
+                @endif
+                <br />{{ $post->created_at->format('m-d-Y')  }}
+
             </div>
 
             <div class="panel-body">

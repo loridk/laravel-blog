@@ -10,6 +10,8 @@ use App\Comment;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Redirect;
+
 class PostController extends Controller
 {
 
@@ -83,8 +85,13 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        session()->flash('flash_message', 'Post Archived!');
-        return redirect('/');
+
+        if($post->delete()) {
+            return Redirect::route('home')->with('message', 'Post deleted.');
+        }
+        else {
+            return Redirect::route('home')->with('message', 'Error.');
+        }
     }
 
 

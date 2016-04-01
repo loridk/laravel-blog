@@ -19,6 +19,15 @@
 
         <div class="col-md-8">
 
+                @if ( session()->has('message') )
+                    <div class="alert alert-info">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <p>{{ session()->get('message') }}</p>
+                    </div>
+                @endif
+
+
+
             @foreach($posts->reverse() as $post)
 
 
