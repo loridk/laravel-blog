@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::delete('/delete',  ['as' => 'delete', 'uses' => 'PostController@destroy']);
 
     // edit post
-    //Route::get('/{post}/edit', 'PostController@edit');
+    Route::get('/edit', 'PostController@edit');
     //Route::patch('/{post}','PostController@update');
 
 

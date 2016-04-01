@@ -11,11 +11,14 @@
                 {{ $post->title  }}
 
                 @if (Auth::user())
-                    <span class="pull-right">
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-primary btn-xs">Edit</button>
+                        <div class="pull-left">
                        {{ Form::open(['method' => 'DELETE', 'route' => ['delete']]) }}
                         {{ Form::submit('Delete', ['class' => 'btn btn-primary btn-xs']) }}
                         {{ Form::close() }}
-                    </span>
+                            </div>
+                    </div>
                 @endif
                 <br />{{ $post->created_at->format('m-d-Y')  }}
 
