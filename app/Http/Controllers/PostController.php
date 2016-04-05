@@ -12,6 +12,8 @@ use App\Http\Requests;
 
 use Illuminate\Support\Facades\Redirect;
 
+use Illuminate\Support\Facades\Validator;
+
 class PostController extends Controller
 {
 
@@ -34,36 +36,35 @@ class PostController extends Controller
     }
 
 
-   /* public function store(Request $request, Post $post) {
+   public function store(Request $request) {
 
-        $this->validate($request, [
-            'title' => 'required|min:4|max:140',
-            'body' => 'required|min:10'
-        ]);
 
-        $comment = new Comment($request->all());
 
-        $post->addComment($comment, 1);
+       $validator = Validator::make($request->all(), [
+           'title' => 'required|min:4|max:140',
+           'content' => 'required|min:10'
+       ]);
+
+       if ($validator->fails()) {
+           return redirect('/')
+               ->withInput()
+               ->withErrors($validator);
+       }
+
+       $post = new Post($request->all());
+       $post->user_id = $request->user()->id;
+       $post->save();
+
+       return $request->all();
+
+       //return redirect('/');
+
     }
 
 
 
-    public function store(Request $request, Post $post)
-    {
-        $this->validate($request, [
-            'title' => 'required|min:4|max:140',
-            'body' => 'required|min:10'
-        ]);
-        $post = new Post($request->all());
-        $post->user_id = $request->user()->id;
-        $post->save();
 
-        //session()->flash('flash_message', 'Post Created! Great job.');
-        return redirect('/home');
-    }*/
-
-
-    public function store(Request $request, Post $post)
+/*    public function store(Request $request, Post $post)
     {
         // validate
         $this->validate($request, [
@@ -79,7 +80,7 @@ class PostController extends Controller
 
 
         return view('home', 'PostController@index');
-    }
+    }*/
 
 
     public function destroy(Post $post)
