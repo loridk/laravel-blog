@@ -14,9 +14,12 @@
                     <div class="btn-group pull-right">
                         <button class="btn btn-primary btn-xs">Edit</button>
                         <div class="pull-left">
-                       {{ Form::open(['method' => 'DELETE', 'route' => ['delete']]) }}
+                            <a href="/{{ $post->id }}/delete"><button class="btn btn-primary btn-xs">Delete</button></a>
+
+
+                       {{--{{ Form::open(['method' => 'DELETE', 'route' => ['delete']]) }}
                         {{ Form::submit('Delete', ['class' => 'btn btn-primary btn-xs']) }}
-                        {{ Form::close() }}
+                        {{ Form::close() }}--}}
                             </div>
                     </div>
                 @endif

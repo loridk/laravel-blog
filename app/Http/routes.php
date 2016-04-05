@@ -25,7 +25,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/add-post',  ['as' => 'add-post', 'uses' => 'PostController@store']);
 
     // Delete Post
-    Route::delete('/delete',  ['as' => 'delete', 'uses' => 'PostController@destroy']);
+    //Route::delete('/{post}/delete',  ['as' => 'delete', 'uses' => 'PostController@destroy']);
+    Route::get('/{post}/delete', 'PostController@destroy');
 
     // edit post
     //Route::get('/edit', 'PostController@edit');

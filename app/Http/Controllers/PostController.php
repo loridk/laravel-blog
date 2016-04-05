@@ -67,12 +67,9 @@ class PostController extends Controller
     {
         $post-> delete();
 
-        if($post->delete()) {
-            return redirect('/');
-        }
-        else {
-            return "Error";
-        }
+        return redirect('/');
+
+
     }
 
 
