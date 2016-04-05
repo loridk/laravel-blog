@@ -16,14 +16,14 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="title">Post Title:</label>
                             <div class="col-sm-10">
-                                <input type="text" name="title" class="form-control" id="title" placeholder="Title" required>
+                                <input type="text" name="title" class="form-control" id="post-title" placeholder="Title" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="content">Post Content:</label>
+                            <label class="control-label col-sm-2" for="body">Post Content:</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="content" rows="5" id="content" required></textarea>
+                                <textarea class="form-control" name="body" rows="5" id="post-body" required></textarea>
                             </div>
                         </div>
 

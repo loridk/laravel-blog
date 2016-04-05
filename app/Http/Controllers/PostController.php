@@ -42,7 +42,7 @@ class PostController extends Controller
 
        $validator = Validator::make($request->all(), [
            'title' => 'required|min:4|max:140',
-           'content' => 'required|min:10'
+           'body' => 'required|min:10'
        ]);
 
        if ($validator->fails()) {
@@ -52,12 +52,14 @@ class PostController extends Controller
        }
 
        $post = new Post($request->all());
+       $post->title = $request->title;
+       $post->body = $request->body;
        $post->user_id = $request->user()->id;
        $post->save();
 
-       return $request->all();
+       //return $request->all();
 
-       //return redirect('/');
+       return redirect('/');
 
     }
 

@@ -40,7 +40,7 @@
 
                         <div class="panel-body">
 
-                            {{ $post->content }}
+                            {{ $post->body }}
 
 
                         </div>
